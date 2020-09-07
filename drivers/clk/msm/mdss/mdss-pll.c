@@ -270,6 +270,11 @@ static int mdss_pll_probe(struct platform_device *pdev)
 			pll_res->ssc_center = true;
 	}
 
+	pr_info("pll_res ssc_en: %d\n", pll_res->ssc_en);
+        pr_info("pll_res ssc_freq: %lu\n", (unsigned long)pll_res->ssc_freq);
+        pr_info("pll_res ssc_ppm: %lu\n", (unsigned long)pll_res->ssc_ppm);
+        pr_info("pll_res ssc_center: %d\n", pll_res->ssc_center);
+
 	pll_base_reg = platform_get_resource_byname(pdev,
 						IORESOURCE_MEM, "pll_base");
 	if (!pll_base_reg) {
