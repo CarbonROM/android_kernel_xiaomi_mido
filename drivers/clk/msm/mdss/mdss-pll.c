@@ -20,6 +20,7 @@
 #include <linux/delay.h>
 #include <linux/iopoll.h>
 #include <linux/clk/msm-clock-generic.h>
+#include <linux/printk>
 
 #include "mdss-pll.h"
 #include "mdss-dsi-pll.h"
@@ -269,6 +270,11 @@ static int mdss_pll_probe(struct platform_device *pdev)
 		if (label && !strcmp(label, "center-spread"))
 			pll_res->ssc_center = true;
 	}
+
+	printk("pll_res ssc_en: %d\n", pll->ssc_en);
+        printk("pll_res ssc_freq: %lu\n", (unsigned long)pll->ssc_freq);
+        printk("pll_res ssc_ppm: %lu\n", (unsigned long)pll->ssc_ppm);
+        printk("pll_res ssc_center: %d\n", pll->ssc_center);
 
 	pll_base_reg = platform_get_resource_byname(pdev,
 						IORESOURCE_MEM, "pll_base");
